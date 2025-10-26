@@ -2,7 +2,7 @@
 
 **Projeto de Iniciação Científica - FATEF**
 
-> **Repositório do Projeto:** [https://github.com/adriel007/fortecode](https://github.com/adriel007/fortecode)
+> **Repositório do Projeto:** [https://github.com/adriel007/fortecode-plugin](https://github.com/adriel007/fortecode-plugin)
 
 **FORTECode** é uma extensão para Visual Studio Code desenvolvida como parte de um projeto de Iniciação Científica da FATEF. O objetivo central desta pesquisa é explorar métodos de proteção de software proprietário no desenvolvimento web, especificamente contra plágio e engenharia reversa casual.
 
@@ -44,7 +44,7 @@ Este plugin atua como um *wrapper* (ponte) para ferramentas robustas e testadas 
 
 Como este plugin é um protótipo de pesquisa, ele não está na Marketplace oficial. Para testá-lo:
 
-1.  Vá para a seção [**Releases**](https://github.com/adriel007/fortecode/releases) do nosso repositório GitHub.
+1.  Vá para a seção [**Releases**](https://github.com/adriel007/fortecode-plugin/releases) do nosso repositório GitHub.
 2.  Baixe o arquivo `.vsix` mais recente (ex: `fortecode-0.1.0.vsix`).
 3.  No seu VSCode, vá até a aba de **Extensões** (Ctrl+Shift+X).
 4.  Clique nos três pontinhos (`...`) no canto superior do painel e selecione **"Instalar do VSIX..."**.
