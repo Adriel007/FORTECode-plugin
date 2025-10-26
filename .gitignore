@@ -1,0 +1,22 @@
+# Dependências
+/node_modules
+/.pnp
+.pnp.js
+
+# Saída de compilação
+/out
+
+# Pacotes da Extensão
+/*.vsix
+
+# Configurações de IDE
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# Arquivos de OS
+.DS_Store
+Thumbs.db

@@ -1,0 +1,112 @@
+{
+  "name": "fortecode",
+  "displayName": "FORTECode",
+  "description": "Minifica e ofusca código selecionado (JS, CSS, HTML) para proteger scripts proprietários.",
+  "version": "0.1.0",
+  "publisher": "iniciacao-cientifica-adriel-luizfelipe",
+  "icon": "logo.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seu-usuario/fortecode.git"
+  },
+  "engines": {
+    "vscode": "^1.75.0"
+  },
+  "categories": [
+    "Formatters",
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:fortecode.minify",
+    "onCommand:fortecode.obfuscate"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "fortecode.minify",
+        "title": "FORTECode: Minificar Seleção"
+      },
+      {
+        "command": "fortecode.obfuscate",
+        "title": "FORTECode: Ofuscar Seleção (JavaScript)"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "when": "editorHasSelection",
+          "command": "fortecode.minify",
+          "group": "navigation@1"
+        },
+        {
+          "when": "editorHasSelection && editorLangId == 'javascript'",
+          "command": "fortecode.obfuscate",
+          "group": "navigation@2"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "FORTECode",
+      "properties": {
+        "forteCode.obfuscator.compact": {
+          "type": "boolean",
+          "default": true,
+          "description": "Compactar o código ofuscado em uma única linha."
+        },
+        "forteCode.obfuscator.controlFlowFlattening": {
+          "type": "boolean",
+          "default": true,
+          "description": "Ofuscação pesada do fluxo de controle. Pode impactar performance."
+        },
+        "forteCode.obfuscator.deadCodeInjection": {
+          "type": "boolean",
+          "default": true,
+          "description": "Injeta código 'morto' (inútil) para confundir a análise."
+        },
+        "forteCode.obfuscator.debugProtection": {
+          "type": "boolean",
+          "default": false,
+          "description": "Ativa proteção anti-debug (ex: impede F12/DevTools)."
+        },
+        "forteCode.obfuscator.disableConsoleOutput": {
+          "type": "boolean",
+          "default": true,
+          "description": "Desativa `console.log`, `console.info`, etc."
+        },
+        "forteCode.obfuscator.stringArray": {
+          "type": "boolean",
+          "default": true,
+          "description": "Move todas as strings para um grande array central, dificultando a leitura."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/clean-css": "^4.2.11",
+    "@types/html-minifier": "^4.0.6",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.75.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "@vscode/test-electron": "^2.3.4",
+    "eslint": "^8.44.0",
+    "glob": "^10.3.3",
+    "mocha": "^10.2.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "javascript-obfuscator": "^4.1.0",
+    "terser": "^5.22.0"
+  }
+}
