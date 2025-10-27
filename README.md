@@ -67,9 +67,9 @@ Como este plugin é um protótipo de pesquisa, ele não está na Marketplace ofi
 Este projeto foi concebido e desenvolvido por:
 
 * **Adriel Domingues de Souza Andrade**
-    * [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adriel-domingues-de-souza-andrade/)
+    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/adriel-domingues-de-souza-andrade/)
 * **Luiz Felipe Moura Batista**
-    * [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luiz-felipe-m-a9b843227/)
+    [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/luiz-felipe-m-a9b843227/)
 
 ## ⚠️ Disclaimer de Pesquisa
 
