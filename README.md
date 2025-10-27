@@ -2,6 +2,8 @@
 
 **Projeto de Iniciação Científica - FATEF**
 
+![Logo](icon.png)
+
 > **Repositório do Projeto:** [https://github.com/adriel007/fortecode-plugin](https://github.com/adriel007/fortecode-plugin)
 
 **FORTECode** é uma extensão para Visual Studio Code desenvolvida como parte de um projeto de Iniciação Científica da FATEF. O objetivo central desta pesquisa é explorar métodos de proteção de software proprietário no desenvolvimento web, especificamente contra plágio e engenharia reversa casual.
