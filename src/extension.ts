@@ -4,22 +4,20 @@ import * as JSObfuscator from 'javascript-obfuscator';
 import CleanCSS = require('clean-css');
 import * as HTMLMinifier from 'html-minifier-terser';
 
-// Função chamada quando o plugin é ativado
 export function activate(context: vscode.ExtensionContext) {
 
     console.log('FORTECode está ativo!');
 
-    // --- REGISTRAR COMANDO MINIFY ---
     let minifyCommand = vscode.commands.registerCommand('fortecode.minify', async () => {
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
-            return; // Nenhum editor ativo
+            return;
         }
 
         const selection = editor.selection;
         const selectedText = editor.document.getText(selection);
         if (!selectedText) {
-            return; // Nenhuma seleção
+            return;
         }
 
         const langId = editor.document.languageId;
@@ -29,8 +27,8 @@ export function activate(context: vscode.ExtensionContext) {
             switch (langId) {
                 case 'javascript':
                     const jsResult = await Terser.minify(selectedText, {
-                        mangle: true, // Renomeia variáveis
-                        compress: true // Remove código morto, etc.
+                        mangle: true,
+                        compress: true
                     });
                     processedText = jsResult.code || '';
                     break;
@@ -42,8 +40,8 @@ export function activate(context: vscode.ExtensionContext) {
                     processedText = await HTMLMinifier.minify(selectedText, {
                         removeComments: true,
                         collapseWhitespace: true,
-                        minifyJS: true, // Também minifica JS inline
-                        minifyCSS: true, // Também minifica CSS inline
+                        minifyJS: true,
+                        minifyCSS: true,
                         conservativeCollapse: true,
                         removeRedundantAttributes: true,
                     });
@@ -54,7 +52,6 @@ export function activate(context: vscode.ExtensionContext) {
             }
 
             if (processedText) {
-                // Substitui o texto selecionado pelo texto processado
                 editor.edit((editBuilder: vscode.TextEditorEdit) => {
                     editBuilder.replace(selection, processedText);
                 });
@@ -68,14 +65,12 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    // --- REGISTRAR COMANDO OBFUSCATE ---
     let obfuscateCommand = vscode.commands.registerCommand('fortecode.obfuscate', () => {
         const editor = vscode.window.activeTextEditor;
         if (!editor) {
             return; 
         }
         
-        // Só roda em JavaScript
         if (editor.document.languageId !== 'javascript') {
             vscode.window.showWarningMessage(`FORTECode: Ofuscação só é suportada para JavaScript.`);
             return;
@@ -84,11 +79,10 @@ export function activate(context: vscode.ExtensionContext) {
         const selection = editor.selection;
         const selectedText = editor.document.getText(selection);
         if (!selectedText) {
-            return; // Nenhuma seleção
+            return;
         }
 
         try {
-            // Pega configurações do usuário (Settings do VSCode)
             const config = vscode.workspace.getConfiguration('forteCode.obfuscator');
 
             const obfuscationResult = JSObfuscator.obfuscate(selectedText, {
@@ -99,7 +93,7 @@ export function activate(context: vscode.ExtensionContext) {
                 disableConsoleOutput: config.get('disableConsoleOutput', true),
                 stringArray: config.get('stringArray', true),
                 rotateStringArray: true,
-                stringArrayEncoding: ['base64'], // 'base64' ou 'rc4'
+                stringArrayEncoding: ['base64'], // or rc4
                 stringArrayThreshold: 0.75
             });
             
@@ -112,9 +106,7 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-    // Adiciona os comandos ao contexto da extensão
     context.subscriptions.push(minifyCommand, obfuscateCommand);
 }
 
-// Função de desativação (pode deixar em branco)
-export function deactivate() {}
+export function deactivate() {} // coming soon
